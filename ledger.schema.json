@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Bank local educational ledger version 1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "currency", "entries"],
+  "properties": {
+    "version": {"const": 1},
+    "currency": {"const": "EGP"},
+    "entries": {
+      "type": "array",
+      "maxItems": 10000,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "date", "type", "amountMinor", "note"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[A-Za-z0-9_-]{1,64}$"},
+          "date": {"type": "string", "format": "date", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
+          "type": {"enum": ["income", "expense"]},
+          "amountMinor": {"type": "integer", "minimum": 1, "maximum": 9007199254740991},
+          "note": {"type": "string", "maxLength": 160}
+        }
+      }
+    }
+  },
+  "$comment": "ledger.js also checks calendar dates, unique IDs and exact aggregate bounds."
+}

@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "currency": "EGP",
+  "entries": [
+    {"id":"demo-income-1","date":"2026-10-02","type":"income","amountMinor":10,"note":"قبض تجريبي ١"},
+    {"id":"demo-income-2","date":"2026-10-02","type":"income","amountMinor":20,"note":"قبض تجريبي ٢"},
+    {"id":"demo-expense-1","date":"2026-10-02","type":"expense","amountMinor":5,"note":"صرف تجريبي"}
+  ]
+}

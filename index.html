@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>دفتر التدريب | Bank</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="masthead">
+      <div><span class="eyebrow">BANK / نموذج محلي</span><h1>دفتر التدريب</h1><p>سجّل قبضك وصرفك، وتابع الأرقام خطوة بخطوة.</p></div>
+      <span class="local-badge">الحفظ في هذا المتصفح</span>
+    </header>
+    <p class="scope-note">دفتر تعليمي بالجنيه المصري. استخدم بيانات تجريبية؛ لا توجد حسابات أو خدمات بنكية متصلة.</p>
+    <section class="overview" aria-label="ملخص الدفتر">
+      <article class="balance-card"><span>الرصيد الحالي</span><strong id="balance" dir="ltr">0.00</strong><span>جنيه مصري · EGP</span></article>
+      <article class="summary-card"><span>إجمالي القبض</span><strong id="income" dir="ltr">0.00</strong><small>جنيه مصري</small></article>
+      <article class="summary-card"><span>إجمالي الصرف</span><strong id="expense" dir="ltr">0.00</strong><small>جنيه مصري</small></article>
+    </section>
+    <p id="status" class="status" role="status" aria-live="polite">الدفتر جاهز.</p>
+    <div class="work-grid">
+      <section class="panel" aria-labelledby="entry-heading">
+        <span class="eyebrow">01 / حركة جديدة</span><h2 id="entry-heading">أضف إلى الدفتر</h2>
+        <form id="entry-form">
+          <label for="type">نوع الحركة</label><select id="type" name="type"><option value="income">قبض</option><option value="expense">صرف</option></select>
+          <div class="field-grid"><div><label for="amount">المبلغ بالجنيه</label><input id="amount" name="amount" inputmode="decimal" autocomplete="off" maxlength="18" placeholder="مثال: 25.50" required></div><div><label for="date">التاريخ</label><input id="date" name="date" type="date" required></div></div>
+          <label for="note">الوصف <span class="optional">اختياري</span></label><input id="note" name="note" maxlength="160" placeholder="مثل: مستلزمات الدرس">
+          <p class="field-help">حتى منزلتين عشريتين. تُحفظ المبالغ كعدد صحيح من القروش.</p>
+          <button id="save-entry" class="primary" type="submit">حفظ الحركة</button>
+        </form>
+      </section>
+      <section class="panel backup-panel" aria-labelledby="backup-heading">
+        <span class="eyebrow">02 / نسخة من الدفتر</span><h2 id="backup-heading">احفظ نسخة معك</h2>
+        <p>الحفظ محلي لهذا المتصفح والعنوان. تصدير JSON يعطيك نسخة يمكن استيرادها لاحقًا؛ حذف بيانات المتصفح قد يزيل الدفتر.</p>
+        <button id="export" class="secondary" type="button">تصدير الدفتر إلى JSON</button>
+        <div class="import-area"><label for="import-file">اختر ملفًا لاستبدال الدفتر</label><input id="import-file" type="file" accept=".json,application/json"><p id="import-preview" class="field-help">يُفحص الملف وتُعرض نتيجته قبل الاستبدال. الحد 5MB.</p><button id="import-confirm" class="secondary" type="button" disabled>اعتماد الملف واستبدال الدفتر</button></div>
+      </section>
+    </div>
+    <section class="panel statement" aria-labelledby="statement-heading">
+      <div class="section-top"><div><span class="eyebrow">03 / كشف الحركة</span><h2 id="statement-heading">كل حركة لها أثر</h2></div><p><strong id="entry-count">0</strong> حركة · الأحدث إدخالًا أولًا</p></div>
+      <div class="table-wrap"><table><caption class="sr-only">الحركات والرصيد بعد كل حركة حسب ترتيب الإدخال</caption><thead><tr><th scope="col">التاريخ</th><th scope="col">الوصف</th><th scope="col">النوع</th><th scope="col">المبلغ (EGP)</th><th scope="col">الرصيد بعدها</th><th scope="col">إجراء</th></tr></thead><tbody id="entries"><tr><td colspan="6" class="empty-state">دفترك يبدأ من هنا. أضف أول حركة قبض أو صرف.</td></tr></tbody></table></div>
+      <nav id="pager" class="pager" aria-label="صفحات الكشف" hidden><button id="newer" class="secondary" type="button">الحركات الأحدث</button><span id="page-info"></span><button id="older" class="secondary" type="button">الحركات الأقدم</button></nav>
+    </section>
+    <footer>مرحلة أولى للتعلّم · عملة واحدة · لا مزامنة سحابية · لا نصائح مالية</footer>
+  </main>
+</body>
+</html>
