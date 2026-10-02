@@ -1,0 +1,12 @@
+{
+  "name": "bank-local-learning-ledger",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Local educational receipt and expense ledger",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  }
+}

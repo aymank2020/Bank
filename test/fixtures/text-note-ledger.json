@@ -1,0 +1,7 @@
+{
+  "version": 1,
+  "currency": "EGP",
+  "entries": [
+    {"id":"demo-text","date":"2026-10-02","type":"income","amountMinor":100,"note":"<img src=x onerror=alert(1)>"}
+  ]
+}
